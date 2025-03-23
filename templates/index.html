@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прогноз опоздания пассажира на рейс</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="toolbar">
+        <img src="{{ url_for('static', filename='images/s7-logo.png') }}" alt="S7 Logo" class="s7-logo">
+    </div>
+
+    <div class="main-container">
+        <div class="left-block">
+            <div class="top-container">
+                <h2>Информация о полете</h2>
+                <div class="input-group">
+                    <label for="totalSeats">Всего мест:</label>
+                    <input type="number" id="totalSeats" name="totalSeats" placeholder="Введите число" required>
+                </div>
+                <div class="input-group">
+                    <label for="avgTickets">Ср. кол-во продаваемых билетов:</label>
+                    <input type="number" id="avgTickets" name="avgTickets" placeholder="Введите число" required>
+                </div>
+                <div class="button-group">
+                    <button type="button" class="set-button" id="setButton" onclick="setFlightInfo()">Установить</button>
+                    <button type="button" class="reset-button" onclick="resetFlightInfo()">Сбросить</button>
+                </div>
+                <div id="errorMessage" class="error-message"></div> 
+            </div>
+
+            
+            <div class="left-container">
+                <div class="fixed-rows">
+                    <div class="fixed-row">Кол-во проданных билетов: <span id="soldTickets">0</span></div>
+                    <div class="fixed-row">✓: <span id="checkedTickets">0</span> &nbsp;&nbsp; ✗: <span id="cancelledTickets">0</span></div>
+                </div>
+                <div class="scrollable-content">
+                    <ul id="ticketList"></ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-container">
+            <div class="container">
+                <h1>Прогноз опоздания пассажира на рейс</h1>
+                <form id="predictionForm">
+                    <label for="name">ФИО:</label>
+                    <input type="text" id="name" name="name" placeholder="Введите ФИО" required>
+
+                    <label for="gender">Пол:</label>
+                    <select id="gender" name="gender" required>
+                        <option value="" disabled selected>Выберите пол</option>
+                        <option value="male">Мужской</option>
+                        <option value="female">Женский</option>
+                    </select>
+
+                    <label for="age">Возраст:</label>
+                    <input type="number" id="age" name="age" placeholder="Введите возраст" required>
+
+                    <label for="flights">Общее количество рейсов:</label>
+                    <input type="number" id="flights" name="flights" placeholder="Введите число" required>
+
+                    <label for="missed">Пропущенные рейсы:</label>
+                    <input type="number" id="missed" name="missed" placeholder="Введите число" required>
+
+                    <label for="cancelled">Отмененные рейсы:</label>
+                    <input type="number" id="cancelled" name="cancelled" placeholder="Введите число" required>
+
+                    <label for="returnable">Возвратные билеты:</label>
+                    <select id="returnable" name="returnable" required>
+                        <option value="" disabled selected>Выберите вариант</option>
+                        <option value="yes">Да</option>
+                        <option value="no">Нет</option>
+                    </select>
+
+                    <label for="luggage">Багаж:</label>
+                    <select id="luggage" name="luggage" required>
+                        <option value="" disabled selected>Выберите вариант</option>
+                        <option value="yes">Да</option>
+                        <option value="no">Нет</option>
+                    </select>
+
+                    <label for="type">Тип рейса:</label>
+                    <select id="type" name="type" required>
+                        <option value="" disabled selected>Выберите тип</option>
+                        <option value="domestic">Внутренний</option>
+                        <option value="international">Международный</option>
+                    </select>
+
+                    <label for="reason">Причина поездки:</label>
+                    <select id="reason" name="reason" required>
+                        <option value="" disabled selected>Выберите причину</option>
+                        <option value="work">Работа</option>
+                        <option value="leisure">Отдых</option>
+                        <option value="family">Семья</option>
+                        <option value="emergency">Чрезвычайная ситуация</option>
+                    </select>
+
+                    <div class="add-button-container">
+                        <button type="button" onclick="addTicket()">Добавить</button>
+                    </div>
+                    <div id="addTicketErrorMessage" class="error-message"></div> 
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="\static\js\script.js"></script>
+</body>
+</html>
