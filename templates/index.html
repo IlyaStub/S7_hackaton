@@ -45,6 +45,9 @@
         <div class="right-container">
             <div class="container">
                 <h1>Прогноз опоздания пассажира на рейс</h1>
+                <div id="salesClosedMessage" class="sales-closed-message" style="display: none;">
+                    Продажа завершена
+                </div>
                 <form id="predictionForm">
                     <label for="name">ФИО:</label>
                     <input type="text" id="name" name="name" placeholder="Введите ФИО" required>
@@ -82,11 +85,11 @@
                         <option value="no">Нет</option>
                     </select>
 
-                    <label for="type">Тип рейса:</label>
+                    <label for="type">Класс обслуживания:</label>
                     <select id="type" name="type" required>
-                        <option value="" disabled selected>Выберите тип</option>
-                        <option value="domestic">Внутренний</option>
-                        <option value="international">Международный</option>
+                        <option value="" disabled selected>Выберите класс</option>
+                        <option value="domestic">Эконом</option>
+                        <option value="international">Бизнес</option>
                     </select>
 
                     <label for="reason">Причина поездки:</label>
@@ -108,5 +111,6 @@
     </div>
 
     <script src="\static\js\script.js"></script>
+    
 </body>
 </html>

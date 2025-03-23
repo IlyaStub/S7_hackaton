@@ -8,6 +8,14 @@ body {
     font-family: Arial, sans-serif;
 }
 
+html, body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
 .toolbar {
     width: 100%;
     background-color: white;
@@ -230,4 +238,12 @@ button:hover {
 
 .error {
     border: 1px solid #C4D600 !important;
+}
+
+.sales-closed-message {
+    color: red;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
 }
